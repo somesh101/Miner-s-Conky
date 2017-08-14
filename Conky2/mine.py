@@ -1,18 +1,18 @@
-import subprocess
-import json
+#import subprocess
+import json,requests
 import datetime
-out1=subprocess.check_output(["curl","https://api.cryptonator.com/api/ticker/btc-usd"])
-out2=subprocess.check_output(["curl","https://api.cryptonator.com/api/ticker/zec-usd"])
-out3=subprocess.check_output(["curl","https://api.cryptonator.com/api/ticker/eth-usd"])
-out4=subprocess.check_output(["curl","https://api.nanopool.org/v1/zec/user/t1RL3nmwnLhBpX9n1ZrRKgZXac4Pp7aCvYB"])
-out5=subprocess.check_output(["curl","http://api.fixer.io/latest?base=USD"])
+out1=requests.get("https://api.cryptonator.com/api/ticker/btc-usd").json()
+out2=requests.get("https://api.cryptonator.com/api/ticker/zec-usd").json()
+out3=requests.get("https://api.cryptonator.com/api/ticker/eth-usd").json()
+out4=requests.get("https://api.nanopool.org/v1/zec/user/t1RL3nmwnLhBpX9n1ZrRKgZXac4Pp7aCvYB").json()
+out5=requests.get("http://api.fixer.io/latest?base=USD").json()
 
 
-out1=json.loads(out1)
-out2=json.loads(out2)
-out3=json.loads(out3)
-out4=json.loads(out4)
-out5=json.loads(out5)
+#out1=json.loads(out1)
+#out2=json.loads(out2)
+#out3=json.loads(out3)
+#out4=json.loads(out4)
+#out5=json.loads(out5)
 
 res="1 USD       : INR "
 res+=str(out5['rates']['INR'])+ '\n'
